@@ -1,20 +1,20 @@
 @import "settings";
-@import "foundation";
+@import "compass/css3";
 
 // Or selectively include components
-// @import
+ @import
 //   "foundation/components/accordion",
 //   "foundation/components/alert-boxes",
 //   "foundation/components/block-grid",
 //   "foundation/components/breadcrumbs",
 //   "foundation/components/button-groups",
-//   "foundation/components/buttons",
-//   "foundation/components/clearing",
+//  "foundation/components/buttons",
+  "foundation/components/clearing",
 //   "foundation/components/dropdown",
 //   "foundation/components/dropdown-buttons",
 //   "foundation/components/flex-video",
-//   "foundation/components/forms",
-//   "foundation/components/grid",
+  "foundation/components/forms",
+   "foundation/components/grid",
 //   "foundation/components/inline-lists",
 //   "foundation/components/joyride",
 //   "foundation/components/keystrokes",
@@ -35,6 +35,209 @@
 //   "foundation/components/thumbs",
 //   "foundation/components/tooltips",
 //   "foundation/components/top-bar",
-//   "foundation/components/type",
+   "foundation/components/type",
 //   "foundation/components/offcanvas",
-//   "foundation/components/visibility";
+   "foundation/components/visibility";
+
+
+$teal: #26a6a5;
+$red: #b3395e;
+$green: #55bd22;
+$custom-border-radius: 8px;
+$bg-gray: #efefef;
+
+
+
+html.no-touch {
+	& a.button {
+		&:hover {
+			background-color: $red;
+			color: white;
+		}
+	}
+	& input[type=submit] {
+		&:hover {
+			background-color: transparent;
+			border-color: $teal;
+			color: $teal;
+		}
+		&[disabled]:hover {
+			background-color: transparent;
+			border-color: lighten(gray, 20%);
+			color: lighten(gray, 20%);
+		}
+	}
+}
+
+
+* {
+	@include box-sizing(border-box);
+}
+
+html {
+	font-size: 14px;
+}
+
+body {
+	background-color: whitesmoke;
+	color: #333;
+	min-height: 500px;
+	@include background-image(linear-gradient(to bottom, $bg-gray, white, $bg-gray), $bg-gray);
+}
+
+.row {
+	padding-left: .75rem;
+	padding-right: .75rem;
+	&.actions {
+		margin-top: 1.5rem;
+	}
+}
+
+a.button, input[type=submit] {
+	padding: 1rem .75rem;
+	margin: 0;
+	width: 8rem;
+	min-width: 8rem;
+	@include box-shadow(0 0 0 0);
+	@include border-radius($custom-border-radius);
+	cursor: pointer;
+	border: none;
+	font-size: 1rem;
+	@include transition(background-color .2s, color .2s, border-color .2s);
+}
+
+input[type=text], input[type=password], input[type=email] {
+	height: 44px;
+	@include border-radius($custom-border-radius);
+	padding-left: 1rem;
+	@include transition(all .2s);
+	&:focus {
+		background-color: transparent;
+		border-color: $teal;
+		@include box-shadow(0 0 10px rgba(0,0,0,.25));
+	}
+	&[data-invalid] {
+		border-color: red;
+		color: red;
+	}
+}
+
+.error input, .error textarea, .error select {
+	margin-bottom: .5rem;
+}
+
+[data-abide] .error small.error {
+	@include border-radius(8px);
+	background-color: transparent;
+	border: 1px solid red;
+	color: red;
+	padding-top: .5rem;
+}
+
+input.checkbox {
+	display: none;
+}
+
+input.checkbox + label > span.checkbox-span {
+	display: inline-block;
+	color: #FFF;
+	border: 1px solid scale-color($white, $lightness: -20%);
+	width: 26px;
+	line-height: 25px;
+	font-size: 22px;
+	text-align: center;
+	@include border-radius(8px);
+	margin-right: .5rem;
+}
+
+input[type="checkbox"] + label {
+	margin: 0;
+}
+
+input.checkbox:checked + label > span.checkbox-span {
+	color: scale-color($white, $lightness: -20%);
+}
+
+
+a.button.cancel {
+	border: 1px solid $red;
+	background-color: transparent;
+	color: $red;
+	&.action-alignment {
+		float:left;
+	}
+}
+
+input[type=submit] {
+	border: 1px solid $teal;
+	background-color: $teal;
+	color: white;
+	&.action-alignment {
+		float:right;
+	}
+	&[disabled] {
+		background-color: transparent;
+		border-color: lighten(gray, 20%);
+		color: lighten(gray, 20%);
+		cursor: default;
+	}
+}
+
+.logo {
+	text-align: center;
+	padding: 2rem;
+	& img {
+		@include transition(width .2s, max-width .2s);
+		max-width: 40%;
+	}	
+}
+
+
+form {
+	& input {
+		@include border-radius(50px);
+	}
+}
+
+
+#request-holder {
+
+	width: 100%;
+	& #request {
+		background-color: $teal;
+		text-align: center;
+		padding: 1rem;
+		color: white;
+		@include box-shadow(0 0 10px rgba(0,0,0,.25));
+		& span {
+		}
+	}
+}
+
+
+
+
+/*~~~~~~~~~~~ MEDIUM UP ~~~~~~~~~~~*/
+@media screen and (min-width: 640px) {
+	html {
+		font-size: 16px;
+		& .logo {
+			& img {
+				max-width: 30%;
+			}	
+		}
+		& a.button.cancel.action-alignment {
+			float: right;
+			margin-right: 1rem;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
